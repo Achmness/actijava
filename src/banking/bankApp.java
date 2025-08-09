@@ -1,24 +1,17 @@
 
-package activjava.newpackage;
+package banking;
 
 public class bankApp {
     private int accNo;
     float balance;
-    private int pin;
+    int pin;
+
     public int getAccNo() {
         return accNo;
     }
 
-    public void setAccNo(int accountNo) {
+    public void setAccNo(int accNo) {
         this.accNo = accNo;
-    }
-
-    public float getInitialBalance() {
-        return balance;
-    }
-
-    public void setInitialBalance(float initialBalance) {
-        this.balance = balance;
     }
 
     public int getPin() {
@@ -28,6 +21,16 @@ public class bankApp {
     public void setPin(int pin) {
         this.pin = pin;
     }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+    
+    
     
     public boolean verifyAccount(int acc, int pn){
         
@@ -38,11 +41,11 @@ public class bankApp {
             }
     }
     
-    public int setAccount(){
-        return accNo;
+    public void deposti (){
+        
     }
     
-    public void viewBalance(){
+    public void withdraw(){
     
     
     }
