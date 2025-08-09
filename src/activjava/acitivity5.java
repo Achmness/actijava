@@ -27,22 +27,31 @@ public class acitivity5 {
                 
                 int len = bApp.length;
                 int response;
+                int accCount = 0;
                 do{
                 System.out.println("1. Register Account");
                 System.out.println("2. Sign Account");
                 System.out.println("3. View All Accounts");
+                System.out.println("Deposit Money");
+                System.out.println("Deposit");
                 System.out.println("");
                 System.out.print("Enter Selection: ");
                 int action = sc.nextInt();
                 
                 switch(action){
                     case 1:
-                        
+                    if(accCount < bApp.length){
+                        bApp[accCount] = new bankApp();
                         System.out.print("Enter Account Number: ");
-                        bApp[0].setAccNo(sc.nextInt());
+                        int accNo = sc.nextInt();
                         System.out.print("Set Account Pin: ");
-                        bApp[0].setPin(sc.nextInt());
+                        int pin = sc.nextInt();
                         
+                        bApp[accCount].setAccNo(accNo);
+                        bApp[accCount].setPin(pin);
+                        accCount++;
+                        
+                    }
                     break;
                     case 2:
                         
@@ -71,7 +80,7 @@ public class acitivity5 {
                     break;
                     case 3:
                 
-                        for(int i = 0; i <=1; i++){
+                        for(int i = 0; i < accCount; i++){
 
                                 System.out.println("Account " + (i+1) + ": "+bApp[i].getAccNo());
 

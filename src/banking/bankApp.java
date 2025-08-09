@@ -41,7 +41,13 @@ public class bankApp {
             }
     }
     
-    public void deposti (){
+    public void deposti (float depo){
+        if(depo > 0){
+            this.balance += depo;
+            System.out.println("Deposit of "+ depo +"New Balance "+ this.balance); 
+        }else{
+            System.out.println("Invalid Deposit Amount");
+        }
         
     }
     
