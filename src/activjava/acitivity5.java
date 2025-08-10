@@ -32,8 +32,6 @@ public class acitivity5 {
                 System.out.println("1. Register Account");
                 System.out.println("2. Sign Account");
                 System.out.println("3. View All Accounts");
-                System.out.println("Deposit Money");
-                System.out.println("Deposit");
                 System.out.println("");
                 System.out.print("Enter Selection: ");
                 int action = sc.nextInt();
@@ -54,29 +52,68 @@ public class acitivity5 {
                     }
                     break;
                     case 2:
+                    int attempt = 3; 
+                    boolean logIn = false;
+                    while(attempt > 0 && !logIn){
+                    System.out.print("Enter Account Number: ");
+                    int accSign = sc.nextInt();
+                    System.out.print("Enter Pin Number: ");
+                    int pinSign = sc.nextInt();
                         
-                        System.out.println("Enter Account No.: ");
-                        int accout = sc.nextInt();
-                        System.out.println("Enter Pin No.: ");
-                        int pin = sc.nextInt();
-                        
-                        bankApp bapp = new bankApp();
-                        int attempt = 3;
-                        while(!(bapp.verifyAccount (accout, pin))){
-                            if(attempt == 1){
-                                System.out.println("ATTEMPT LIMIT REACHED!");
-                                System.exit(0);
+                        for(int i = 0; i < accCount; i++){
+                            if(bApp[i].verifyAccount(accSign, pinSign)){
+                                System.out.println("LOG IN SUCCESSFUL!");  
+                                logIn = true;
+                                break;
                             }
-                            attempt--;
-                            System.out.println("Invalid Account!");
-                            System.out.println("Attempt Left " + attempt);
-                            System.out.println("Enter Account No.: ");
-                            accout = sc.nextInt();
-                            System.out.println("Enter Pin No.: ");
-                            pin = sc.nextInt();
-                            
                         }
+                    
+                        if(!logIn){
+                            attempt--;
+                            System.out.println("Invalid Account");
+                            System.out.println("Attempt Left; "+ attempt);   
+                        }
+                        if(attempt == 1){
+                            System.out.println("ATTEMPT LIMIT REACHED");
+                            System.exit(0);
+                        }
+                    }
+                    if(logIn == true){
+                        int bankMenu;
+                    do{    
+                        System.out.println("\n--- Transactions Menu ---");
+                        System.out.println("1. Deposit");
+                        System.out.println("2. Withdraw");
+                        System.out.println("3. View Balance");
+                        System.out.println("4. Logout");
+                        System.out.print("Enter choice: ");
+                        bankMenu = sc.nextInt();
+                        switch(bankMenu){
+                            case 1:
+                                System.out.print("Enter Deposit Amount: ");
+                                float depAmount = sc.nextFloat();
+                                bApp[0].deposit(depAmount);
+                            break;
                             
+                            case 2: 
+                                System.out.print("Enter Withdraw Amount: ");
+                                float withAmount = sc.nextFloat();
+                                bApp[0].withdraw(withAmount);
+                            break;
+                            
+                            case 3:
+                                bApp[0].balance();
+                            break;
+                            
+                            case 4:
+                                System.out.println("Logging Out!");
+                            break;
+                            default:
+                                System.out.println("Invalid Choice");
+                        }
+                    }while (bankMenu != 4);
+
+                    }        
                     break;
                     case 3:
                 

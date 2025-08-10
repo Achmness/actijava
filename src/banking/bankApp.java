@@ -3,8 +3,8 @@ package banking;
 
 public class bankApp {
     private int accNo;
-    float balance;
-    int pin;
+    private float balance;
+    private int pin;
 
     public int getAccNo() {
         return accNo;
@@ -41,18 +41,28 @@ public class bankApp {
             }
     }
     
-    public void deposti (float depo){
-        if(depo > 0){
-            this.balance += depo;
-            System.out.println("Deposit of "+ depo +"New Balance "+ this.balance); 
+    public void deposit (float amount){
+        if(amount > 0){
+            this.balance += amount;
+            System.out.println("Deposit of "+ amount +"\nNew Balance "+ this.balance); 
         }else{
             System.out.println("Invalid Deposit Amount");
         }
         
     }
     
-    public void withdraw(){
-    
-    
+    public void withdraw(float amount){
+        if(amount > 0 && amount <= this.balance ){
+            this.balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+    }else{
+            System.out.println("Insufficient balance or invalid amount!");
+        }
+        
     }
+    
+    public void balance(){
+        System.out.println("Current Balance: "+ balance);
+    }
+    
 }
